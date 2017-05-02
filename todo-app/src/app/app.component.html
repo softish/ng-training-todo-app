@@ -1,0 +1,19 @@
+<h1>
+  {{title}}
+</h1>
+
+<form id="todo-form" (submit) = "onSubmit(todo)">
+  <input type="text" name="name" [(ngModel)]="todo"/>
+</form>
+
+<div>
+<ul>
+  <li *ngFor="let todo of todos;let i=index">
+    <div>
+      <span class="todo" [ngClass]="todo.isDone ? 'todo-done' : ''">{{todo.name}}</span>
+      <input type="checkbox" class="btn-done" (click) = "toggleDone(i)" [(ngModel)]="todo.isDone"/>
+      <span class="btn-delete" (click)="delete(i)"> X</span>
+    </div>
+  </li>
+</ul>
+</div>
