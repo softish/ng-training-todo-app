@@ -9,14 +9,20 @@ export class AppComponent {
   title = 'todo app works!';
   todos: Todo[];
   editingEnabled: boolean[];
+  editedTodo: string[];
   todo: string = '';
 
   constructor() {
     this.todos = [new Todo('Todo 1', false), new Todo('Todo 2', false), new Todo('Todo 3', false)];
     this.editingEnabled = [false, false, false];
+    this.editedTodo = [];
+    this.todos.forEach((eachTodo) => {
+      this.editedTodo.push(eachTodo.name);
+    });
   }
 
   onSubmit() {
+    // Need to push editing enabled here to keep todos and editingEnabled in sync
     this.todos.push(new Todo(this.todo, false));
     this.todo = '';
   }
@@ -30,10 +36,12 @@ export class AppComponent {
   }
 
   enableEditing(index: number) {
+    console.log('Enable editing called');
     this.editingEnabled[index] = true;
   }
 
   disableEditing(index: number) {
+    console.log('Blur event called');
     this.editingEnabled[index] = false;
   }
 }

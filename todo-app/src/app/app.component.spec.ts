@@ -134,18 +134,57 @@ describe('AppComponent', () => {
       expect(todo.classes['todo-done']).toBeFalsy();
     }));
 
-  /*  it('should enabled input when span clicked', fakeAsync(() => {
+   it('should show not input box for inplace edit by default', fakeAsync(() => {
+     let form = this.fixture.debugElement.queryAll(By.css('.edit-todo-form'))[0];
+     expect(form).toBeFalsy();
+   }));
 
-      let span = this.fixture.debugElement.queryAll(By.css('.todo'))[1];
+   it('should show hide span for inplace edit when clicked', fakeAsync(() => {
+     let span = this.fixture.debugElement.queryAll(By.css('.todo'))[0];
+
+     span.triggerEventHandler('click', null);
+
+     this.fixture.detectChanges();
+     tick();
+
+     let allSpans = this.fixture.debugElement.queryAll(By.css('.todo'));
+     expect(allSpans.length).toBe(2);
+
+     allSpans.forEach(eachSpan => {
+         expect(eachSpan.nativeElement.value).not.toBe('Todo 1');
+     });
+   }));
+
+    it('should show input box with task name for inplace edit when span is clicked', fakeAsync(() => {
+
+      let span = this.fixture.debugElement.queryAll(By.css('.todo'))[0];
 
       span.triggerEventHandler('click', null);
 
       this.fixture.detectChanges();
       tick();
 
-      let compiled = this.fixture.debugElement.nativeElement;
-      let taskInput = compiled.querySelector('.edit-todo-form:first-child');
+      let form = this.fixture.debugElement.queryAll(By.css('.edit-todo-form'))[0];
+      expect(form.query(By.css('.input-todo')).nativeElement.value).toBe('Todo 1');
+    }));
 
-      expect(taskInput.style('display')).not.toBe('inline');
-    })); */
+    it('should hide inplace edit input box and show span with task name input box loses focus/blurs', fakeAsync(() => {
+
+      let span = this.fixture.debugElement.queryAll(By.css('.todo'))[0];
+
+      span.triggerEventHandler('click', null);
+
+      this.fixture.detectChanges();
+      tick();
+
+      let form = this.fixture.debugElement.queryAll(By.css('.edit-todo-form'))[0];
+
+      form.query(By.css('.input-todo')).nativeElement.focus = true;
+
+      form.query(By.css('.input-todo')).triggerEventHandler('blur', null);
+      this.fixture.detectChanges();
+      tick();
+
+      expect(this.fixture.debugElement.queryAll(By.css('.todo'))[0].nativeElement.innerText).toBe('Todo 1');
+    }));
 });
