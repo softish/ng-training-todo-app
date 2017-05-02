@@ -32,6 +32,10 @@ export class AppComponent {
   enableEditing(index: number) {
     this.editingEnabled[index] = true;
   }
+
+  disableEditing(index: number) {
+    this.editingEnabled[index] = false;
+  }
 }
 
 export class Todo {

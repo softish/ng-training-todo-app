@@ -133,4 +133,19 @@ describe('AppComponent', () => {
       let todo: DebugElement = this.fixture.debugElement.queryAll(By.css('.todo'))[1];
       expect(todo.classes['todo-done']).toBeFalsy();
     }));
+
+  /*  it('should enabled input when span clicked', fakeAsync(() => {
+
+      let span = this.fixture.debugElement.queryAll(By.css('.todo'))[1];
+
+      span.triggerEventHandler('click', null);
+
+      this.fixture.detectChanges();
+      tick();
+
+      let compiled = this.fixture.debugElement.nativeElement;
+      let taskInput = compiled.querySelector('.edit-todo-form:first-child');
+
+      expect(taskInput.style('display')).not.toBe('inline');
+    })); */
 });

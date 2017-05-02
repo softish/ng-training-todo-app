@@ -2,3 +2,18 @@
   text-decoration: line-through;
   color: rgb(211,211,211);
 }
+.cursor-pointer{
+  cursor: pointer;
+}
+.todo-header{
+    margin-bottom:5px;
+    border: 1px solid rgba(0, 0, 0, 0.22);
+    border-radius: 0.25rem;
+    border-top: 2px solid #3c8dbc;
+}
+body {
+  background-color: rgb(236,240,245);
+}
+.btn-delete{
+    color: gray;
+}

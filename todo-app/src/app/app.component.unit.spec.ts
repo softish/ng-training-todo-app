@@ -61,4 +61,10 @@ describe('AppComponentUnit', () => {
 
     expect(component.editingEnabled[1]).toBeTruthy();
   });
+
+  it('should set disable editing property to false when disableEditing is called', ()=> {
+    component.disableEditing(1);
+
+    expect(component.editingEnabled[1]).toBeFalsy();
+  });
 });
