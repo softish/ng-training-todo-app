@@ -11,13 +11,14 @@ export class TodoComponent implements OnInit {
   @Input() todo: Todo;
   @Output() event: EventEmitter<string>;
   editingEnabled: boolean = false;
+  editedName: string;
 
   constructor(private service: InMemoryTodoService) {
     this.event = new EventEmitter<string>();
   }
 
   ngOnInit() {
-
+    this.editedName = this.todo.name;
   }
 
   delete() {
@@ -36,6 +37,7 @@ export class TodoComponent implements OnInit {
 
   disableEditing() {
     this.editingEnabled = false;
+    this.editedName = this.todo.name;
   }
 
   renameTodo(newName: string) {

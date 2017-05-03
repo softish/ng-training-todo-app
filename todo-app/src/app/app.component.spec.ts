@@ -3,6 +3,7 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
+import {TodoComponent} from './component/todo/todo.component';
 
 describe('AppComponent', () => {
   let fixture: ComponentFixture<AppComponent>;
@@ -13,6 +14,7 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       imports: [FormsModule],
       declarations: [
+        TodoComponent,
         AppComponent
       ],
     }).compileComponents();
