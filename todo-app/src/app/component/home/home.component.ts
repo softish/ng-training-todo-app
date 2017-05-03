@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Todo } from '../../app.component';
 import {InMemoryTodoService} from '../../service/in-memory-todo.service';
-
+import { Todo } from '../../model/todo';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  providers: [InMemoryTodoService]
+  providers: []
 })
 export class HomeComponent implements OnInit {
   todos: Todo[];

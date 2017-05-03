@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { InMemoryTodoService } from './service/in-memory-todo.service';
+import { Todo } from './model/todo';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [InMemoryTodoService]
+  providers: []
 })
 export class AppComponent implements OnInit {
   title = 'todo app works!';
@@ -30,17 +31,5 @@ export class AppComponent implements OnInit {
 
   onEvent(event: string) {
     this.todos = this.service.getTodos();
-  }
-}
-
-export class Todo {
-  id: number;
-  name: string;
-  isDone = false;
-
-  constructor (id: number, name: string, isDone: boolean) {
-    this.id = id;
-    this.name = name;
-    this.isDone = isDone;
   }
 }

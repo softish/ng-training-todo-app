@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import {Todo } from '../../app.component';
 import { HomeComponent} from './home.component';
 import { InMemoryTodoService } from '../../service/in-memory-todo.service';
+import { Todo } from '../../model/todo';
 
 describe('HomeComponentUnit', () => {
   let component: HomeComponent;

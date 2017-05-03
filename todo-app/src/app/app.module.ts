@@ -27,7 +27,7 @@ const routes = [
     NgbModule.forRoot(),
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [InMemoryTodoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

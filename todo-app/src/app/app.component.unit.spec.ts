@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { AppComponent, Todo } from './app.component';
+import { AppComponent} from './app.component';
 import { InMemoryTodoService } from './service/in-memory-todo.service';
-
+import { Todo } from './model/todo';
 describe('AppComponentUnit', () => {
   let component: AppComponent;
   let service: InMemoryTodoService;

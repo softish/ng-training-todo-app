@@ -1,7 +1,7 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { InMemoryTodoService } from './in-memory-todo.service';
-import { Todo } from '../app.component';
+import { Todo } from '../model/todo';
 
 describe('InMemoryTodoService', () => {
   let service: InMemoryTodoService;
