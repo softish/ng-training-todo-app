@@ -33,7 +33,7 @@ describe('AppComponentUnit', () => {
     component.todo = 'New Task';
     component.onSubmit();
 
-    expect(service.addTodo).toHaveBeenCalledWith(new Todo('New Task', false));
+    expect(service.addTodo).toHaveBeenCalledWith('New Task');
 
     expect(service.getTodos).toHaveBeenCalled();
     expect(component.todos.length).toBe(4);

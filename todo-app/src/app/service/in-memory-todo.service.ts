@@ -4,12 +4,13 @@ import { Todo } from '../app.component';
 @Injectable()
 export class InMemoryTodoService {
   todos: Todo[];
+  id: number = 0;
 
   constructor() {
     this.todos = [
-      new Todo('Todo 1', false),
-      new Todo('Todo 2', false),
-      new Todo('Todo 3', false)
+      new Todo(this.id++, 'Todo 1', false),
+      new Todo(this.id++, 'Todo 2', false),
+      new Todo(this.id++, 'Todo 3', false)
     ];
   }
 
@@ -17,8 +18,8 @@ export class InMemoryTodoService {
     return this.todos;
   }
 
-  addTodo(todo : Todo){
-    this.todos.push(todo);
+  addTodo(name : string){
+    this.todos.push(new Todo(this.id++, name, false));
   }
 
   deleteTodo(id: number) {

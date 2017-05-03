@@ -13,30 +13,29 @@ describe('InMemoryTodoService', () => {
   it('should should have three todos after construction', () => {
     expect(service.todos.length).toBe(3);
 
-    expect(service.todos).toContain(new Todo('Todo 1', false));
-    expect(service.todos).toContain(new Todo('Todo 2', false));
-    expect(service.todos).toContain(new Todo('Todo 3', false));
+    expect(service.todos).toContain(new Todo(0, 'Todo 1', false));
+    expect(service.todos).toContain(new Todo(1, 'Todo 2', false));
+    expect(service.todos).toContain(new Todo(2, 'Todo 3', false));
   });
 
   it('should return todos' , () => {
-    service.todos.push(new Todo('A new todo', false));
+    service.todos.push(new Todo(3, 'A new todo', false));
 
     expect(service.getTodos().length).toBe(4);
-    expect(service.getTodos()).toContain(new Todo('A new todo', false));
+    expect(service.getTodos()).toContain(new Todo(3, 'A new todo', false));
   });
 
   it('should add new todo at the end of todos', () => {
-    let todo = new Todo('A new Todo', false);
-    service.addTodo(todo);
+    service.addTodo('A new Todo');
     expect(service.getTodos().length).toBe(4);
-    expect(service.getTodos()[3]).toBe(todo);
+    expect(service.getTodos()[3]).toEqual(new Todo(3, 'A new Todo', false));
   });
 
   it('should delete todo based on index passed', () => {
     service.deleteTodo(1);
 
     expect(service.getTodos().length).toBe(2);
-    expect(service.getTodos()).not.toContain(new Todo('Todo 2', false));
+    expect(service.getTodos()).not.toContain(new Todo(1, 'Todo 2', false));
   });
 
   it('should update the todo to mark it as done', () => {

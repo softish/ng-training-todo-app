@@ -25,7 +25,7 @@ export class AppComponent {
 
   onSubmit() {
     // Need to push editing enabled here to keep todos and editingEnabled in sync
-    this.service.addTodo(new Todo(this.todo, false));
+    this.service.addTodo(this.todo);
 
     this.editingEnabled.push(false);
     this.editedTodo.push(this.todo);
@@ -61,10 +61,12 @@ export class AppComponent {
 }
 
 export class Todo {
+  id: number;
   name: string;
   isDone = false;
 
-  constructor (name: string, isDone: boolean) {
+  constructor (id: number, name: string, isDone: boolean) {
+    this.id = id;
     this.name = name;
     this.isDone = isDone;
   }

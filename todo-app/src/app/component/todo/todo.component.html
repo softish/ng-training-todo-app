@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+      <div class="col-sm-10">
+        <span class="todo cursor-pointer" [ngClass]="todo.isDone ? 'todo-done' : ''"  (click)="enableEditing()" *ngIf="!editingEnabled">{{todo.name}}</span>
+        <form class="edit-todo-form" *ngIf="editingEnabled" (submit)="renameTodo(editedTodo)">
+              <input type="text" name="editableInput" class="input-todo" (blur)="disableEditing()" [(ngModel)]="editedTodo"/>
+        </form>
+      </div>
+      <div class="col-sm-1">
+          <input type="checkbox" class="btn-done" (click) = "toggleDone()" [(ngModel)]="todo.isDone" />
+      </div>
+      <div class="col-sm-1">
+          <span class="fa fa-trash-o btn-delete cursor-pointer" (click)="delete()"></span>
+      </div>
+  </div>
+</div>
