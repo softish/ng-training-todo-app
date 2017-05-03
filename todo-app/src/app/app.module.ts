@@ -7,11 +7,13 @@ import {InMemoryTodoService } from './service/in-memory-todo.service';
 import {TodoComponent} from './component/todo/todo.component';
 
 import { AppComponent } from './app.component';
+import { HomeComponent } from './component/home/home.component';
 
 @NgModule({
   declarations: [
     TodoComponent,
-    AppComponent
+    AppComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
