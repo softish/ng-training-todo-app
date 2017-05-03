@@ -11,8 +11,8 @@ describe('AppComponentUnit', () => {
       component = new AppComponent(service);
   });
 
-  it(`should have a title with value 'todo app works!'`, () => {
-    expect(component.title).toEqual('todo app works!');
+  it(`should have a title with value 'ng-todo!'`, () => {
+    expect(component.title).toEqual('ng-todo!');
   });
 
   it('should call service to fetch todos on ngOnInit', () => {

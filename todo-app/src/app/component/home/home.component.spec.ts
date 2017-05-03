@@ -4,6 +4,7 @@ import { DebugElement } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {TodoComponent} from '../../component/todo/todo.component';
 import {HomeComponent} from '../../component/home/home.component';
+import {InMemoryTodoService} from '../../service/in-memory-todo.service';
 
 describe('HomeComponent', () => {
   let fixture: ComponentFixture<HomeComponent>;
@@ -13,6 +14,7 @@ describe('HomeComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule],
+      providers: [InMemoryTodoService],
       declarations: [
         TodoComponent,
         HomeComponent

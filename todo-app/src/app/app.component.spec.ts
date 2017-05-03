@@ -7,7 +7,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import {HomeComponent} from './component/home/home.component';
 import {TodoComponent} from './component/todo/todo.component';
-
+import {InMemoryTodoService} from './service/in-memory-todo.service';
 
 describe('AppComponent', () => {
   let fixture: ComponentFixture<AppComponent>;
@@ -19,6 +19,7 @@ describe('AppComponent', () => {
         FormsModule,
         RouterTestingModule.withRoutes([])
       ],
+      providers: [InMemoryTodoService],
       declarations: [
         TodoComponent,
         HomeComponent,
@@ -33,9 +34,8 @@ describe('AppComponent', () => {
     this.fixture.detectChanges();
   }));
 
-  it('should render title in a h1 tag',() => {
-    const compiled = this.fixture.nativeElement;
-    expect(compiled.querySelector('h1').innerText).toContain(this.component.title);
+  it('should render title in navbar brand',() => {
+    expect(this.fixture.debugElement.query(By.css('.navbar-brand')).nativeElement.innerText).toContain(this.component.title);
   });
 
   it('should display router outlet', () => {

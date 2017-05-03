@@ -9,7 +9,7 @@ import { Todo } from './model/todo';
   providers: []
 })
 export class AppComponent implements OnInit {
-  title = 'todo app works!';
+  title = 'ng-todo!';
   todos: Todo[];
 
   todo: string = '';

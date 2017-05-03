@@ -9,16 +9,19 @@ import {InMemoryTodoService } from './service/in-memory-todo.service';
 import {TodoComponent} from './component/todo/todo.component';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './component/home/home.component';
+import { SearchComponent } from './component/search/search.component';
 
 const routes = [
-  {path: '**', component: HomeComponent}
+  {path: '', component: HomeComponent},
+  {path: 'search', component: SearchComponent}
 ];
 
 @NgModule({
   declarations: [
     TodoComponent,
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

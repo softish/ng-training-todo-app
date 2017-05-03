@@ -1,0 +1,13 @@
+<div class="container">
+
+  <form id="search-form" (keyup) = "search(query)" class="form-group">
+    <input type="text" name="name" [(ngModel)]="query" class="form-control" placeholder="Search a todo"/>
+  </form>
+
+  <ul class="list-group">
+      <li *ngFor="let todo of searchRes" class="list-group-item todo-header">
+        <app-todo [todo]="todo" (event)="onEvent($event)"></app-todo>
+      </li>
+  </ul>
+
+</div>
