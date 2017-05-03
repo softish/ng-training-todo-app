@@ -126,13 +126,18 @@ describe('AppComponent', () => {
 
     it('should show input box with task name for inplace edit when span is clicked', fakeAsync(() => {
 
-      let span = this.wrapper.getTodoSpans()[0];
+      this.wrapper.setNewTodoValue('New Todo');
+
+      let form = this.wrapper.getTodoForm();
+      this.wrapper.submitForm(form);
+
+      let span = this.wrapper.getTodoSpans()[3];
 
       this.wrapper.clickElement(span);
 
-      let form = this.wrapper.getEditableTodoForms()[0];
+      let editableForm = this.wrapper.getEditableTodoForms()[0];
 
-      expect(this.wrapper.getInputTodo(form).nativeElement.value).toBe('Todo 1');
+      expect(this.wrapper.getEditableTodoInput(editableForm).nativeElement.value).toBe('New Todo');
     }));
 
     it('should hide inplace edit input box and show span with task name input box loses focus/blurs', fakeAsync(() => {
@@ -145,6 +150,20 @@ describe('AppComponent', () => {
       this.wrapper.blurEditableTodoInput(form);
 
       expect(this.wrapper.getTodoSpans()[0].nativeElement.innerText).toBe('Todo 1');
+    }));
+
+    it('should update the task name span with the updated value of task when in place edit is submitted', fakeAsync(() => {
+      let span = this.wrapper.getTodoSpans()[0];
+
+      this.wrapper.clickElement(span);
+
+      let form = this.wrapper.getEditableTodoForms()[0];
+
+      this.wrapper.setEditableTodoInputValue(0, 'Updated task');
+
+      this.wrapper.submitForm(form);
+
+      expect(this.wrapper.getTodoSpans()[0].nativeElement.innerText).toBe('Updated task');
     }));
 
     class AppComponentTestWrapper {
@@ -171,8 +190,17 @@ describe('AppComponent', () => {
         return this.fixture.debugElement.queryAll(By.css('.edit-todo-form'));
       }
 
-      getInputTodo(form : DebugElement) : DebugElement {
+      getEditableTodoInput(form: DebugElement) : DebugElement {
         return form.query(By.css('.input-todo'));
+      }
+
+      setEditableTodoInputValue(index: number, value: string) {
+        let input = this.getEditableTodoInput(this.getEditableTodoForms()[index]);
+        input.nativeElement.value = value;
+        input.nativeElement.dispatchEvent(new Event('input'));
+
+        this.fixture.detectChanges();
+        tick();
       }
 
       getDoneButtons() : DebugElement[] {

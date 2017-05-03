@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
+import { InMemoryTodoService } from './service/in-memory-todo.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [InMemoryTodoService]
 })
 export class AppComponent {
   title = 'todo app works!';
@@ -12,8 +14,8 @@ export class AppComponent {
   editedTodo: string[];
   todo: string = '';
 
-  constructor() {
-    this.todos = [new Todo('Todo 1', false), new Todo('Todo 2', false), new Todo('Todo 3', false)];
+  constructor(private service: InMemoryTodoService) {
+    this.todos = this.service.getTodos();
     this.editingEnabled = [false, false, false];
     this.editedTodo = [];
     this.todos.forEach((eachTodo) => {
@@ -23,26 +25,38 @@ export class AppComponent {
 
   onSubmit() {
     // Need to push editing enabled here to keep todos and editingEnabled in sync
-    this.todos.push(new Todo(this.todo, false));
+    this.service.addTodo(new Todo(this.todo, false));
+
+    this.editingEnabled.push(false);
+    this.editedTodo.push(this.todo);
+
+    this.todos = this.service.getTodos();
     this.todo = '';
   }
 
-  delete(index: number) {
-    this.todos.splice(index, 1);
+  delete(id: number) {
+    this.service.deleteTodo(id);
+    this.todos = this.service.getTodos();
   }
 
-  toggleDone(index: number) {
-    this.todos[index].isDone = !this.todos[index].isDone;
+  toggleDone(id: number) {
+    this.service.updateDone(id, !this.todos[id].isDone);
+    this.todos = this.service.getTodos();
   }
 
-  enableEditing(index: number) {
-    console.log('Enable editing called');
-    this.editingEnabled[index] = true;
+  enableEditing(id: number) {
+    this.editingEnabled[id] = true;
   }
 
-  disableEditing(index: number) {
-    console.log('Blur event called');
-    this.editingEnabled[index] = false;
+  disableEditing(id: number) {
+    this.editingEnabled[id] = false;
+  }
+
+  renameTodo(id: number, newName: string) {
+    console.log('rename called');
+    this.service.updateName(id, newName);
+    this.editingEnabled[id] = false;
+    this.todos = this.service.getTodos();
   }
 }
 
