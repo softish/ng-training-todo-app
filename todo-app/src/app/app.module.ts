@@ -5,15 +5,15 @@ import { HttpModule } from '@angular/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule, Routes } from '@angular/router';
 
-import {InMemoryTodoService } from './service/in-memory-todo.service';
-import {TodoComponent} from './component/todo/todo.component';
+import { InMemoryTodoService } from './service/in-memory-todo.service';
+import { TodoComponent } from './component/todo/todo.component';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './component/home/home.component';
 import { SearchComponent } from './component/search/search.component';
 
 const routes = [
-  {path: '', component: HomeComponent},
-  {path: 'search', component: SearchComponent}
+  { path: '', component: HomeComponent },
+  { path: 'search', component: SearchComponent }
 ];
 
 @NgModule({

@@ -15,17 +15,17 @@ export class InMemoryTodoService {
     ];
   }
 
-  getTodos() : Todo[] {
+  getTodos(): Todo[] {
     return this.todos;
   }
 
-  addTodo(name : string){
+  addTodo(name: string) {
     this.todos.push(new Todo(this.id++, name, false));
   }
 
   deleteTodo(id: number) {
     console.log('delete called' + id);
-    for (var i = 0; i < this.todos.length; i++) {
+    for (let i = 0; i < this.todos.length; i++) {
       if (this.todos[i].id === id) {
         this.todos.splice(i, 1);
       }
@@ -34,7 +34,7 @@ export class InMemoryTodoService {
 
   updateDone(id: number, isDone: boolean) {
     console.log('update done called' + id);
-    for (var i = 0; i < this.todos.length; i++) {
+    for (let i = 0; i < this.todos.length; i++) {
       if (this.todos[i].id === id) {
         this.todos[i].isDone = isDone;
       }
@@ -43,7 +43,7 @@ export class InMemoryTodoService {
 
   updateName(id: number, newName: string) {
     console.log('update name called' + id);
-    for (var i = 0; i < this.todos.length; i++) {
+    for (let i = 0; i < this.todos.length; i++) {
       if (this.todos[i].id === id) {
         this.todos[id].name = newName;
       }

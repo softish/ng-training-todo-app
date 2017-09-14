@@ -7,7 +7,7 @@ describe('InMemoryTodoService', () => {
   let service: InMemoryTodoService;
 
   beforeEach(() => {
-      service = new InMemoryTodoService();
+    service = new InMemoryTodoService();
   });
 
   it('should should have three todos after construction', () => {
@@ -18,7 +18,7 @@ describe('InMemoryTodoService', () => {
     expect(service.todos).toContain(new Todo(2, 'Todo 3', false));
   });
 
-  it('should return todos' , () => {
+  it('should return todos', () => {
     service.todos.push(new Todo(3, 'A new todo', false));
 
     expect(service.getTodos().length).toBe(4);

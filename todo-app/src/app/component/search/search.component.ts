@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {InMemoryTodoService} from '../../service/in-memory-todo.service';
+import { InMemoryTodoService } from '../../service/in-memory-todo.service';
 import { Todo } from '../../model/todo';
 
 @Component({
